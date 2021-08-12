@@ -1,17 +1,21 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <SearchFilter />
+  <StayWrapper />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent } from 'vue';
+import SearchFilter from './components/SearchFilter.vue';
+import StayWrapper from './components/StayWrapper.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    SearchFilter,
+    StayWrapper
   }
-}
+});
 </script>
 
 <style lang="scss">
