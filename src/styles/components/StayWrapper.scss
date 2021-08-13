@@ -1,0 +1,9 @@
+@import '../core/mixins';
+
+.stay-wrapper{
+   width: 100%;
+}
+.stay-list{
+   @include flexContent(center, center, column);
+   background-color: bisque;
+}

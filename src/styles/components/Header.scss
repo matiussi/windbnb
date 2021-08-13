@@ -1,0 +1,9 @@
+@import '../core/mixins';
+
+header{
+   @include flexContent(center, center, column);
+   width: 100%;
+   .logo{
+      align-self: flex-start;
+   }
+}

@@ -1,6 +1,8 @@
 <template>
    <li class="stay-item">
-      <img :src="photo"/>
+      <div class="stay-photo">
+         <img :src="photo"/>
+      </div>
       <div class="stay-info">
          <span v-if="superHost" class="superhost">
             SUPER HOST
@@ -9,7 +11,7 @@
             {{type}}, {{beds}}
          </div>
          <div class="rating">
-           <span class="material-icons">face</span>{{rating}}
+           <span class="material-icons">star</span>{{rating}}
          </div>
       </div>
       <h2>{{title}}</h2>
@@ -39,4 +41,3 @@ export default{
 }
 </script>
 
-<style lang="scss" src="../styles/components/SearchFilter.scss"></style>

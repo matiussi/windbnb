@@ -1,5 +1,10 @@
 <template>
-  <h1>This is the search bar :D</h1>
+  <div class="search-filter">
+    <input placeholder="Add location" class="input-location"/>
+    <input placeholder="Add guests" class="input-guests" />
+    <button class="search-button"> <span class="material-icons">search</span></button>
+
+  </div>
 </template>
 
 <script>
@@ -8,5 +13,4 @@ export default{
 }
 </script>
 
-<style lang="scss" src="../styles/components/SearchFilter.scss"></style>
 

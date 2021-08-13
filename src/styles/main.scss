@@ -1,1 +1,36 @@
-$color: blue;
+
+@import './core/_colors.scss';
+@import './core/_fonts.scss';
+@import './core/_mixins.scss';
+@import './core/_typography.scss';
+
+@import './components/Header.scss';
+@import './components/Logo.scss';
+@import './components/SearchFilter.scss';
+@import './components/Stay.scss';
+@import './components/StayWrapper.scss';
+
+
+html, body {
+	font-size: 62.5%;
+	padding: 0;
+	margin: 0;
+}
+
+#app{
+	height: 100vh;
+	@include flexContent(center, inherit, column);
+}
+
+ul, li{
+	list-style: none;
+} 
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+	
