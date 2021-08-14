@@ -2,11 +2,24 @@
 header{
    font-family: 'Mulish', Arial, Helvetica, sans-serif;
 }
-input{
+label{
+   font-size: .9rem;
+   font-weight: 800;
+}
+.search-top h3{
+   font-size: 1.2rem;
+   margin: 0;
+}
+.selected .search-button, .search-results{
+   font-size: 1.4rem;
+}
+.input-location, .input-guests{
    text-indent: 1.6rem;
+   line-height: 1.7rem;
 }
 ::placeholder{
    font-family: 'Mulish', Arial, Helvetica, sans-serif;
+   font-size: 1.4rem;
 }
 .stay-wrapper{
    font-family: 'Montserrat', Arial, Helvetica, sans-serif;

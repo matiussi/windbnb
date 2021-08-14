@@ -3,6 +3,8 @@
 header{
    @include flexContent(center, center, column);
    width: 100%;
+   position: relative;
+   min-height: 17rem;
    .logo{
       align-self: flex-start;
    }

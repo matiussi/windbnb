@@ -16,19 +16,109 @@
       padding: 0;
    }
    input{
-      width: 40%;
+      width: 80%;
+      cursor: pointer;
+      &:focus{
+         outline: none;
+      }
    }
    .input-location, .input-guests{
       border-right: 1px solid $divider-color;
       cursor: pointer;
    }
+   
 }
+// Search bar details
+.search-details{
+   @include flexContent(center, flex-start, column);
+   
+}
+.selected{
+   position: absolute;
+   width: 100%;
+   top: 0;
+   height: 63.2rem;
+   z-index: 10;
+   background-color: #fff;
+   
+   .search-top{
+      @include flexContent(center, center, row);
+      width: 90%;
+      margin-top: 1.8rem;
+      h3{
+         flex-grow: 1;
+      }
+   }
+   .search-filter{
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 90%;
+      min-height: 11rem;
+      margin: 1.6rem auto;
+      input{
+         height: 2rem;
+      }
+   }
+   .input-location, .input-guests{
+      @include flexContent(inherit, flex-start, column);
+      text-indent: 0;
+      width: 100%;
+      height: 5.5rem;
+      & > *{
+         width: 90%;
+         margin-left: 2.6rem;
+      }
+      & > label{
+         margin-top: .5rem;
+      }
+      & > input{
+         line-height: 0;
+      }
+   }
+   .input-location{
+      border-bottom: 1px solid $divider-color;
+   }
+   .search-results{
+      width: 100%;
+      max-height: 36rem;
+      overflow: scroll;
+      .search-item{
+         @include flexContent(center, flex-start, row);
+         color: $default-text-color;
+         padding: 1.8rem 0;
+      }
+   }
+   .search-button{
+      color: #fff;
+      background-color: $main-color;
+      @include flexContent(center, center, row);
+      border-radius: 1.6rem;
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+      width: 12.6rem;
+      height: 8.8rem;
+      margin-bottom: 2rem;
+      &:hover{
+         background-color: $hover-color;
+      }
+      .search{
+         margin-right: 1rem;
+      }
+   }
+}
+
 .search-button{
    min-width: 5.3rem;
    color: $main-color;
    cursor: pointer;
+   &:hover{
+      background-color: $divider-color;
+   }
 }
-.material-icons{
+.material-icons .search{
    width: 1.7rem;
    height: 1.7rem;
+}
+.close-button{
+   cursor: pointer;
+   
 }
