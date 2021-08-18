@@ -3,7 +3,7 @@
      <h1 class="stays-in">Stays in</h1>
      <p class="stays-amount"></p>
       <ul class="stay-list">
-         <Stay v-for="stay in stays" :key="stay"
+         <Stay v-for="stay in filteredCities" :key="stay"
             v-bind:city="stay.city"
             v-bind:country="stay.country"
             v-bind:superHost="stay.superHost"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState} from 'vuex';
+import { mapState} from 'vuex';
 import staysData from '../data/stays.json';
 import Stay from './Stay.vue';
 
@@ -28,21 +28,30 @@ export default {
    components:{
       Stay
    },
-   computed:{
-      ...mapState([
-         'counter'
-      ])
-   },
-   methods:{
-      ...mapMutations([
-         'decrement',
-         'increment'
-      ])
-   },
    data(){
       return{
-         stays: staysData
+         stays: staysData,
+         // filteredCities: []
       }
+   },
+   computed:{
+      ...mapState([
+        'city',
+        'country',
+        'guests'
+      ]),
+      //Filtering the cities according the city name and number of guests defined on store
+      filteredCities: function(){
+         if(this.city){
+            return this.stays.filter(data => {
+               if (data.city.toLowerCase().includes(this.city.toLowerCase()) && data.maxGuests >= this.guests.adults + this.guests.children){
+                  return data
+               }
+            });
+         }
+         return this.stays
+      }
+
    }
 }
 </script>

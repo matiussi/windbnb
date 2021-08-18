@@ -1,10 +1,23 @@
 @import '../core/mixins';
 
+// 
+button,
+input, 
+.input-location, 
+.input-guests, 
+.search-item, 
+.search-button, 
+.close-button{
+   cursor: pointer;
+}
+.search-filter, .search-button{
+   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+}
+
 .search-filter{
    @include flexContent(center, center, row);
    min-height: 5.5rem;
    width: 29.7rem;
-   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
    overflow: hidden;
    border-radius: 1.6rem;
    margin: 3.7rem auto;
@@ -17,19 +30,17 @@
    }
    input{
       width: 80%;
-      cursor: pointer;
       &:focus{
          outline: none;
       }
    }
    .input-location, .input-guests{
       border-right: 1px solid $divider-color;
-      cursor: pointer;
    }
    
 }
-// Search bar details
-.search-details{
+// Search bar wrapper
+.search-wrapper{
    @include flexContent(center, flex-start, column);
    
 }
@@ -64,7 +75,7 @@
       text-indent: 0;
       width: 100%;
       height: 5.5rem;
-      & > *{
+      & > * {
          width: 90%;
          margin-left: 2.6rem;
       }
@@ -78,14 +89,41 @@
    .input-location{
       border-bottom: 1px solid $divider-color;
    }
-   .search-results{
-      width: 100%;
+   .search-details{
+      width: 90%;
       max-height: 36rem;
       overflow: scroll;
+      flex-grow: 1;
       .search-item{
          @include flexContent(center, flex-start, row);
          color: $default-text-color;
          padding: 1.8rem 0;
+      }
+   }
+   .guests-wrapper{
+      @include flexContent(flex-start, center, column);
+      .guests{
+         margin: 1.3rem 1rem;
+         @include flexContent(flex-start, flex-start, column);
+      }
+      .buttons{
+         width: 15rem;
+      }
+      span{
+         margin: 0 1.6rem;
+      }
+      button{
+         width: 2.3rem;
+         height: 2.3rem;
+         background-color: #fff;
+         border-radius: .4rem;
+         border: .1rem solid $button-guests-color;
+         color: $button-guests-color;
+         font-weight: 800;
+         &:hover{
+            color: #fff;
+            background-color: $placeholder-text-color;
+         }
       }
    }
    .search-button{
@@ -93,10 +131,10 @@
       background-color: $main-color;
       @include flexContent(center, center, row);
       border-radius: 1.6rem;
-      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
       width: 12.6rem;
-      height: 8.8rem;
+      height: 4.8rem;
       margin-bottom: 2rem;
+      
       &:hover{
          background-color: $hover-color;
       }
@@ -109,7 +147,6 @@
 .search-button{
    min-width: 5.3rem;
    color: $main-color;
-   cursor: pointer;
    &:hover{
       background-color: $divider-color;
    }
@@ -118,7 +155,4 @@
    width: 1.7rem;
    height: 1.7rem;
 }
-.close-button{
-   cursor: pointer;
-   
-}
+

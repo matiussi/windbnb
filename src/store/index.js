@@ -5,11 +5,21 @@ const app = createApp({})
 export const store = createStore({
    
    state:{
-      counter: 0
+      city: '',
+      country: '',
+      guests:{
+         adults: 0,
+         children: 0,
+      }
    },
    mutations:{
-      increment: state => state.counter--,
-      decrement: state => state.counter++
+      setLocation(state, city, country){
+         state.city = city
+         state.country = country
+      },
+      setGuests(state, guests){
+         state.guests= guests
+      } 
    }
 });
 

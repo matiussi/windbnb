@@ -1,5 +1,5 @@
 <template>
-  <div class="search-details" :class="{selected}">
+  <div class="search-wrapper" :class="{selected}">
     <div class="search-top" v-if="selected">
       <h3>Edit your search</h3>
       <span class="material-icons close-button"  @click="selected = false">close</span>
@@ -7,40 +7,77 @@
     <div class="search-filter" >
       <div class="input-location">
         <label v-if="selected">LOCATION</label>
-        <input placeholder="Add location" @click="selected = !seleted"/>
+        <input placeholder="Add location" v-model="query" @click="selected = true; guestSelected = false; locationSelected=true" @input="onChange()"/>
       </div>
       <div class="input-guests">
         <label v-if="selected">GUESTS</label>
-        <input placeholder="Add guests" @click="selected = !seleted"/>
+        <input placeholder="Add guests" @click="selected = true; guestSelected = true; locationSelected=false"/>
       </div>
       <button class="search-button" v-if="!selected"> <span class="material-icons search">search</span></button>
     </div>
-    <ul class="search-results" v-if="selected">
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-      <li class="search-item"><span class="material-icons">location_on</span>Helsinki, Finland</li>
-    </ul>
-    <span class="search-button" v-if="selected"> <span class="material-icons search">search</span>Search</span>
-
+    <div class="search-details" v-if="selected">
+      <div class="guests-wrapper" :class="{guestSelected}" v-if="guestSelected">
+        <div class="guests">
+          <div class="guests-info">
+            <p class="guest-type">Adults</p>
+            <p class="guest-type-info">Ages 13 or above</p>
+          </div>
+          <div class="buttons">
+            <button @click="adults > 0 ? adults-- : adults">-</button><span>{{adults}}</span><button @click="adults++">+</button>
+          </div>
+        </div>
+        <div class="guests">
+          <div class="guests-info">
+            <p class="guest-type">Children</p>
+            <p class="guest-type-info">Ages 2-12</p>
+          </div>
+          <div class="buttons">
+            <button @click="children > 0 ? children-- : children">-</button><span>{{children}}</span><button @click="children++">+</button>
+          </div>
+        </div>
+      </div>
+      <ul v-if="locationSelected">
+        <li class="search-item" v-for="city in queryResults" :key="city" @click="query = city + ', ' + country; queryResults = []; selectedCity = city"><span class="material-icons">location_on</span>{{city}}, {{country}}</li>
+      </ul>  
+    </div>
+    <span class="search-button" v-if="selected" @click="setLocation(selectedCity, country); setGuests({adults, children})"> <span class="material-icons search">search</span>{{selectedCity}}</span>
   </div>
 </template>
 
 <script>
+import { mapMutations} from 'vuex';
+import staysData from '../data/stays.json';
+
   export default{
     name: 'SearchFilter',
+   
     data(){
       return{
-        selected: false
+        staysData,
+        cities: ['Helsinki', 'Turku', 'Vaasa', 'Oulu'],
+        country: 'Finland',
+        query: '',
+        queryResults: [],
+        selectedCity: '',
+        selected: false,
+        locationSelected: false,
+        guestSelected: false,
+        adults: 0,
+        children: 0
       }
-    }
+    },
+   
+    methods:{
+      onChange: function(){
+        //Filtering the locations to be displayed below the searchbar
+        return this.queryResults = this.cities.filter(query => query.toLowerCase().includes(this.query.toLowerCase()));
+      },
+      ...mapMutations([
+        'setLocation',
+        'setGuests'
+      ])  
+   }
+    
   }
 </script>
 

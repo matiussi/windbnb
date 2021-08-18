@@ -4,13 +4,16 @@ header{
 }
 label{
    font-size: .9rem;
+   
+}
+label, .guest-type{
    font-weight: 800;
 }
 .search-top h3{
    font-size: 1.2rem;
    margin: 0;
 }
-.selected .search-button, .search-results{
+.selected .search-button, .search-details, .guest-type{
    font-size: 1.4rem;
 }
 .input-location, .input-guests{
@@ -23,4 +26,7 @@ label{
 }
 .stay-wrapper{
    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+.guest-type, .guest-type-info{
+   margin: .5rem 0;
 }

@@ -8,6 +8,11 @@ import { defineComponent } from 'vue';
 import StayWrapper from './components/StayWrapper.vue';
 import Header from './components/Header.vue';
 
+/* Some notes about Vue 
+  methods: 
+  data:
+  computed: 
+*/
 export default defineComponent({
   name: 'App',
   components: {
