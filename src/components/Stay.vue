@@ -7,14 +7,14 @@
          <span v-if="superHost" class="superhost">
             SUPER HOST
          </span>
-         <div class="details">
-            {{type}}, {{beds}}
+         <div class="stay-details">
+            {{type}}<p v-if="beds >= 1">, {{beds}} beds</p>
          </div>
-         <div class="rating">
-           <span class="material-icons">star</span>{{rating}}
+         <div class="stay-ratings">
+           <span class="material-icons star">star</span>{{rating}}
          </div>
       </div>
-      <h2>{{title}}</h2>
+      <h2 className="stay-title">{{title}}</h2>
    </li>
 </template>
 

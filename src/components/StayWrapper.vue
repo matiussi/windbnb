@@ -1,8 +1,14 @@
 <template>
   <section class="stay-wrapper">
-     <h1 class="stays-in">Stays in</h1>
-     <p class="stays-amount"></p>
-      <ul class="stay-list">
+     <div class="stay-wrapper-top">
+      <h2 class="stays-in">Stays in {{city ? city : 'Finland'}}</h2>
+      <p class="stays-amount" 
+         v-if="filteredCities">
+         {{filteredCities.length > 12 ? '12+' : filteredCities.length}} 
+         stays
+      </p>
+     </div>
+      <ul class="stay-list" v-if="filteredCities">
          <Stay v-for="stay in filteredCities" :key="stay"
             v-bind:city="stay.city"
             v-bind:country="stay.country"
@@ -15,6 +21,9 @@
             v-bind:photo="stay.photo"
          />
       </ul>
+      <div class="stay" v-if="filteredCities.length < 1">
+         <h2 class="no-stay">No stays were found!</h2>
+      </div>
   </section>
 </template>
 
@@ -40,7 +49,7 @@ export default {
         'country',
         'guests'
       ]),
-      //Filtering the cities according the city name and number of guests defined on store
+      //Filtering the cities according the name and number of guests defined on store
       filteredCities: function(){
          if(this.city){
             return this.stays.filter(data => {

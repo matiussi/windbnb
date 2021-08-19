@@ -11,7 +11,7 @@ input,
    cursor: pointer;
 }
 .search-filter, .search-button{
-   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+   box-shadow: $shadow;
 }
 
 .search-filter{
@@ -19,9 +19,8 @@ input,
    min-height: 5.5rem;
    width: 29.7rem;
    overflow: hidden;
-   border-radius: 1.6rem;
+   border-radius: $rounded;
    margin: 3.7rem auto;
-  
    input, button{
       height: 5.5rem;
       border: none;
@@ -35,7 +34,8 @@ input,
       }
    }
    .input-location, .input-guests{
-      border-right: 1px solid $divider-color;
+      border-right: 1px solid $af-white;
+      
    }
    
 }
@@ -45,7 +45,7 @@ input,
    
 }
 .selected{
-   position: absolute;
+   position: fixed;
    width: 100%;
    top: 0;
    height: 63.2rem;
@@ -75,6 +75,24 @@ input,
       text-indent: 0;
       width: 100%;
       height: 5.5rem;
+      position: relative;
+      .clear-input{
+         position: absolute;
+         top: 35%;
+         left: 80%;
+         width: 1.7rem;
+         height: 1.7rem;
+         background-color: $af-white;
+         border-radius: $rounded;
+         text-align: center;
+         .material-icons{
+            font-size: $text-lg;
+            color: $dark-charcoal;
+         }
+         &:hover{
+            background-color: $gray;
+         }
+      }
       & > * {
          width: 90%;
          margin-left: 2.6rem;
@@ -87,16 +105,19 @@ input,
       }
    }
    .input-location{
-      border-bottom: 1px solid $divider-color;
+      border-bottom: 1px solid $af-white;
    }
    .search-details{
       width: 90%;
       max-height: 36rem;
       overflow: scroll;
       flex-grow: 1;
+      ul{
+         padding: 0;
+         margin: 1rem;
+      }
       .search-item{
          @include flexContent(center, flex-start, row);
-         color: $default-text-color;
          padding: 1.8rem 0;
       }
    }
@@ -116,13 +137,13 @@ input,
          width: 2.3rem;
          height: 2.3rem;
          background-color: #fff;
-         border-radius: .4rem;
-         border: .1rem solid $button-guests-color;
+         border-radius: $rounded-sm;
+         border: .1rem solid $old-silver;
          color: $button-guests-color;
          font-weight: 800;
          &:hover{
             color: #fff;
-            background-color: $placeholder-text-color;
+            background-color: $gray;
          }
       }
    }
@@ -130,13 +151,13 @@ input,
       color: #fff;
       background-color: $main-color;
       @include flexContent(center, center, row);
-      border-radius: 1.6rem;
+      border-radius: $rounded;
       width: 12.6rem;
       height: 4.8rem;
       margin-bottom: 2rem;
       
       &:hover{
-         background-color: $hover-color;
+         background-color: $madder-lake;
       }
       .search{
          margin-right: 1rem;
@@ -148,11 +169,21 @@ input,
    min-width: 5.3rem;
    color: $main-color;
    &:hover{
-      background-color: $divider-color;
+      background-color: $af-white;
    }
 }
 .material-icons .search{
    width: 1.7rem;
    height: 1.7rem;
+   
+}
+.gray-bg{
+   background-color: rgba(79, 79, 79, 0.4);
+   top:100%;
+   left: 0;
+   z-index: 1;
+   position: absolute;
+   height: 100%;
+   width: 100%;
 }
 

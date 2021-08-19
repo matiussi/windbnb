@@ -1,8 +1,38 @@
+.stay-item{
+   @include flexContent(center, center, column);
+   margin-bottom:  3.2rem;
+}
 .stay-photo{
    max-width: 35rem;
    width: 90%;
    max-height: 21.3rem;
+   border-radius: $rounded-lg;
+   overflow: hidden;
+   margin-bottom: 1.3rem;
    img{
       width: 100%;
+   }
+}
+.stay-info{
+   @include flexContent(center, center, row);
+   width: 90%;
+   margin-bottom: 1.15rem;
+}
+.superhost{
+   border: 1px $dark-liver solid;
+   border-radius: $rounded-md;
+   width: 8.8rem;
+   height: 2.4rem;
+   @include flexContent(center, center, row);
+   margin-right: .97rem;
+}
+.stay-details{
+   flex-grow: 1;
+}
+.stay-ratings{
+   @include flexContent(center, center, row);
+   font-size: $text-md;
+   .star{
+      color: $primary-color;
    }
 }

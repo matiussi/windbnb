@@ -1,10 +1,14 @@
+@import './variables';
 
 header{
-   font-family: 'Mulish', Arial, Helvetica, sans-serif;
+   font-family: $mulish;
 }
+.stay-wrapper, footer{
+   font-family: $montserrat;
+}
+
 label{
-   font-size: .9rem;
-   
+   font-size: $text-xs;  
 }
 label, .guest-type{
    font-weight: 800;
@@ -13,20 +17,77 @@ label, .guest-type{
    font-size: 1.2rem;
    margin: 0;
 }
-.selected .search-button, .search-details, .guest-type{
-   font-size: 1.4rem;
+.selected .search-button, 
+.search-details, 
+.guest-type{
+   font-size: $text-md;
 }
 .input-location, .input-guests{
    text-indent: 1.6rem;
    line-height: 1.7rem;
 }
 ::placeholder{
-   font-family: 'Mulish', Arial, Helvetica, sans-serif;
-   font-size: 1.4rem;
+   font-family: $mulish;
+   font-size: $text-md;
 }
-.stay-wrapper{
-   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+.search-item{
+   color: $dark-liver;
 }
 .guest-type, .guest-type-info{
    margin: .5rem 0;
 }
+.stays-in{
+   color: $dark-charcoal;
+   font-size: $text-xl;
+}
+.stays-amount{
+   font-size: $text-md;
+   color: $dark-liver;
+   font-weight: 500;
+}
+.no-stay{
+   font-size: $text-xl;
+   color: $dark-liver;
+}
+.superhost{
+   font-size: 1rem;
+}
+.stay-info{
+   font-size: $text-xs;
+   font-weight: 700;
+}
+.stay-details{
+   color: $old-silver;
+   font-size: $text-sm;
+   font-weight: 500;
+   p{
+      display: inline;
+   }
+}
+.stay-ratings{
+   font-size: $text-sm;
+   color: $dark-liver;
+   font-weight: 500;
+}
+.star{
+   font-size: $icon-sm;
+}
+.stay-title{
+   color: $dark-charcoal;
+   font-weight: 600;
+   font-size: $text-md;
+   width: 90%;
+   line-height: 1.7rem;
+}
+.footer{
+   font-size: $text-md;
+   color: $old-silver;
+   font-weight: 500;
+   margin-bottom: 2.6rem;
+   text-align: center; 
+   .github{
+      font-weight: 700;
+   }
+}
+
+

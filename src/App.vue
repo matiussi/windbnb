@@ -1,12 +1,14 @@
 <template>
   <Header />
   <StayWrapper />
+  <Footer />
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import StayWrapper from './components/StayWrapper.vue';
 import Header from './components/Header.vue';
+import StayWrapper from './components/StayWrapper.vue';
+import Footer from './components/Footer.vue';
 
 /* Some notes about Vue 
   methods: 
@@ -17,7 +19,8 @@ export default defineComponent({
   name: 'App',
   components: {
     Header,
-    StayWrapper
+    StayWrapper,
+    Footer
   }
 });
 </script>
