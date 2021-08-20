@@ -7,12 +7,6 @@
     <div class="search-filter" >
       <div class="input-location">
         <label v-if="selected">LOCATION</label>
-
-        <!-- For some reason v-model doens't work properly on mobile devices, fortunatelly I found a fix for this issue:
-
-          https://stackoverflow.com/questions/51546833/vue-js-keyup-events-and-v-model-length-on-android-not-working-as-expected
-
-         -->
         <input 
           :value='query' 
           @input='event => query = event.target.value'
@@ -50,15 +44,27 @@
           <span class="material-icons">close</span>
         </span>
       </div>
-      <button 
-        class=" desktop" 
-        
-      > 
+      <div class="button-wrapper">
+        <button 
+          class="search-button 
+          desktop" v-if="selected"
+          @click="
+            setLocation(selectedCity, country); 
+            setGuests({adults, children});"> 
+          <span class="material-icons search">search</span>
+          Search
+        </button>
+      </div>
+      <button class="search-button-primary" v-if="!selected"> 
         <span class="material-icons search">search</span>
       </button>
+
     </div>
     <div class="search-details" v-if="selected">
-      <div class="guests-wrapper" :class="{guestSelected}" v-if="guestSelected">
+      <div 
+        class="guests-wrapper" 
+        :class="{guestSelected}" 
+        v-if="guestSelected">
         <div class="guests">
           <div class="guests-info">
             <p class="guest-type">Adults</p>
@@ -98,7 +104,8 @@
           </div>
         </div>
       </div>
-      <ul v-if="locationSelected">
+      
+      <ul class="search-list" v-if="locationSelected">
         <li 
           class="search-item" 
           v-for="city in queryResults" :key="city" 
@@ -119,7 +126,7 @@
         <span class="material-icons search">search</span>
       Search
     </span>
-    <div v-if="selected" class="gray-bg"></div>
+    <!-- <div v-if="selected" class="gray-bg"></div> -->
   </div>
 </template>
 

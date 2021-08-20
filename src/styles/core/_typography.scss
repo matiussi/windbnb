@@ -1,93 +1,105 @@
 @import './variables';
 
-header{
+/* ======================
+   SHARED CSS PROPRIETIES
+   ======================*/
+
+//========== FONT FAMILY ==========
+header, ::placeholder{
    font-family: $mulish;
 }
 .stay-wrapper, footer{
    font-family: $montserrat;
 }
+//========== FONT COLORS ==========
+.stays-amount,
+.search-item,
+.no-stay,
+.stay-ratings{
+   color: $dark-liver;
+}
+.stays-in, .stay-title{
+   color: $dark-charcoal;
+}
+.stay-details, .footer{
+   color: $old-silver;
+}
 
-label{
-   font-size: $text-xs;  
+//========== FONT SIZE ==========
+//Font xtra small
+label, .stay-info{
+   font-size: $text-xs;
+}
+//Font small
+.search-top h3,
+.stay-details,
+.stay-ratings{
+   font-size: $text-sm;
+}
+//Font medium
+.search-details, 
+.guest-type,
+::placeholder,
+.selected .search-button,
+.stays-amount,
+.stay-title,
+.footer{
+   font-size: $text-md;
+}
+//Font large
+.stays-in, .no-stay{
+   font-size: $text-xl
+}
+
+//========== FONT WEIGHT ==========
+.stays-amount, 
+.stay-details, 
+.stay-ratings, 
+.footer{
+   font-weight: 500;
+}
+.stay-info, .github{
+   font-weight: 700;
 }
 label, .guest-type{
    font-weight: 800;
 }
-.search-top h3{
-   font-size: 1.2rem;
-   margin: 0;
-}
-.selected .search-button, 
-.search-details, 
-.guest-type{
-   font-size: $text-md;
-}
+
+//========== OTHERS ==========
 .input-location, .input-guests{
    text-indent: 1.6rem;
    line-height: 1.7rem;
 }
-::placeholder{
-   font-family: $mulish;
-   font-size: $text-md;
-}
-.search-item{
-   color: $dark-liver;
-}
 .guest-type, .guest-type-info{
    margin: .5rem 0;
 }
-.stays-in{
-   color: $dark-charcoal;
-   font-size: $text-xl;
-}
-.stays-amount{
-   font-size: $text-md;
-   color: $dark-liver;
-   font-weight: 500;
-}
-.no-stay{
-   font-size: $text-xl;
-   color: $dark-liver;
-}
+
+/* ======================
+         STAY ITEM
+   ====================== */
+
 .superhost{
    font-size: 1rem;
 }
-.stay-info{
-   font-size: $text-xs;
-   font-weight: 700;
-}
 .stay-details{
-   color: $old-silver;
-   font-size: $text-sm;
-   font-weight: 500;
    p{
       display: inline;
    }
-}
-.stay-ratings{
-   font-size: $text-sm;
-   color: $dark-liver;
-   font-weight: 500;
 }
 .star{
    font-size: $icon-sm;
 }
 .stay-title{
-   color: $dark-charcoal;
    font-weight: 600;
-   font-size: $text-md;
    width: 100%;
    line-height: 1.7rem;
 }
+/* ======================
+         FOOTER
+   ====================== */
 .footer{
-   font-size: $text-md;
-   color: $old-silver;
-   font-weight: 500;
    margin-bottom: 2.6rem;
    text-align: center; 
-   .github{
-      font-weight: 700;
-   }
 }
 
 @media screen and (min-width: 968px){
@@ -103,4 +115,5 @@ label, .guest-type{
    .stay-title{
       font-size: $text-lg;
    }
+   
 }

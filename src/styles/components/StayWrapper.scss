@@ -4,6 +4,7 @@
    width: 100%;
    @include flexContent(center, flex-start, column);
    margin-bottom: 10rem;
+   
 }
 .stay-wrapper-top{
    width: 90%;
@@ -17,9 +18,4 @@
    flex-wrap: wrap;
 }
 
-@media screen and (min-width: 968px) {
-   .stay-wrapper-top{
-      max-width: 115rem;
-   }
-}
 

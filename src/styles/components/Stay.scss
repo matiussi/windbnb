@@ -2,6 +2,7 @@
    @include flexContent(center, flex-start, column);
    margin-bottom:  3.2rem;
    padding: 0 1.6rem;
+   animation: fade-in 1000ms;
 }
 .stay-photo{
    max-width: 35rem;
