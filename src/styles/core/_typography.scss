@@ -76,7 +76,7 @@ label, .guest-type{
    color: $dark-charcoal;
    font-weight: 600;
    font-size: $text-md;
-   width: 90%;
+   width: 100%;
    line-height: 1.7rem;
 }
 .footer{
@@ -90,4 +90,17 @@ label, .guest-type{
    }
 }
 
-
+@media screen and (min-width: 968px){
+   .stays-in{
+      font-size: 2.4rem;
+   }
+   .superhost{
+      font-size: sm;
+   }
+   .stay-details, .stays-amount{
+      font-size: $text-md;
+   }
+   .stay-title{
+      font-size: $text-lg;
+   }
+}

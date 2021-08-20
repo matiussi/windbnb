@@ -1,7 +1,9 @@
 <template>
-  <Header />
-  <StayWrapper />
-  <Footer />
+  <div class="content">
+    <Header />
+    <StayWrapper />
+    <Footer />
+  </div>
 </template>
 
 <script>

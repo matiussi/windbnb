@@ -9,3 +9,16 @@ header{
       align-self: flex-start;
    }
 }
+@media screen and (min-width: 968px) {
+   header{
+      margin: 3.2rem auto 0 auto;
+      flex-direction: row;
+      max-width: 120rem;
+      min-height: 15rem;
+      align-items: flex-start;
+      .logo{
+         flex-grow: 1;
+         align-self: unset;
+      }
+   }
+}

@@ -7,14 +7,19 @@
 }
 .stay-wrapper-top{
    width: 90%;
-   @include flexContent(center, flex-start, row);
-   .stays-in{
-      flex-grow: 1;
-   }
+   @include flexContent(center, space-between, row);
    & > * {
       margin-bottom: 2.4rem;
    }
 }
 .stay-list{
-   @include flexContent(center, center, column);
+   @include flexContent(center, center, row);
+   flex-wrap: wrap;
 }
+
+@media screen and (min-width: 968px) {
+   .stay-wrapper-top{
+      max-width: 115rem;
+   }
+}
+

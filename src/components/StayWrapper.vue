@@ -52,13 +52,14 @@ export default {
       //Filtering the cities according the name and number of guests defined on store
       filteredCities: function(){
          if(this.city){
+            const splitCity = this.city.split(',');
             return this.stays.filter(data => {
-               if (data.city.toLowerCase().includes(this.city.toLowerCase()) && data.maxGuests >= this.guests.adults + this.guests.children){
-                  return data
+               if (data.city.toLowerCase().includes(splitCity[0].toLowerCase()) && data.maxGuests >= this.guests.adults + this.guests.children){
+                  return data;
                }
             });
          }
-         return this.stays
+         return this.stays;
       }
 
    }

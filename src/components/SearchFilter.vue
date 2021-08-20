@@ -7,15 +7,27 @@
     <div class="search-filter" >
       <div class="input-location">
         <label v-if="selected">LOCATION</label>
+
+        <!-- For some reason v-model doens't work properly on mobile devices, fortunatelly I found a fix for this issue:
+
+          https://stackoverflow.com/questions/51546833/vue-js-keyup-events-and-v-model-length-on-android-not-working-as-expected
+
+         -->
         <input 
+          :value='query' 
+          @input='event => query = event.target.value'
+          v-on:keyup="onChange()"
+
           placeholder="Add location" 
-          v-model="query" 
           @click="selected = true; 
           guestSelected = false; 
           locationSelected=true"
-          @input="onChange()"/>
+        />
         <span v-if="selected && query" 
-          @click="query = '' " 
+          @click="
+          query = '';
+          selectedCity = '';
+          queryResults = cities " 
           class="clear-input">
           <span class="material-icons">close</span>
         </span>
@@ -27,7 +39,8 @@
           v-model="guests" 
           @click="selected = true; 
             guestSelected = true; 
-            locationSelected=false"/>
+            locationSelected=false"
+            readonly />
         <span 
           v-if="selected && guests" 
           @click="guests = '' 
@@ -37,7 +50,12 @@
           <span class="material-icons">close</span>
         </span>
       </div>
-      <button class="search-button" v-if="!selected"> <span class="material-icons search">search</span></button>
+      <button 
+        class=" desktop" 
+        
+      > 
+        <span class="material-icons search">search</span>
+      </button>
     </div>
     <div class="search-details" v-if="selected">
       <div class="guests-wrapper" :class="{guestSelected}" v-if="guestSelected">
@@ -84,18 +102,19 @@
         <li 
           class="search-item" 
           v-for="city in queryResults" :key="city" 
-          @click="query = city + ', ' + country;
+          @click="query = city;
             queryResults = []; 
             selectedCity = city">
           <span class="material-icons">location_on</span>
-          {{city}}, {{country}}
+          {{city}}
         </li>
       </ul>  
     </div>
     <span 
       class="search-button" 
       v-if="selected" 
-      @click="setLocation(selectedCity, country); 
+      @click="
+        setLocation(selectedCity, country); 
         setGuests({adults, children});"> 
         <span class="material-icons search">search</span>
       Search
@@ -114,17 +133,17 @@ import staysData from '../data/stays.json';
     data(){
       return{
         staysData,
-        cities: ['Helsinki', 'Turku', 'Vaasa', 'Oulu'],
-        country: 'Finland',
-        query: '',
-        queryResults: [],
+        cities: ['Helsinki, Finland', 'Turku, Finland', 'Vaasa, Finland', 'Oulu, Finland'], 
+        query: '', 
+        queryResults: ['Helsinki, Finland', 'Turku, Finland', 'Vaasa, Finland', 'Oulu, Finland'],
         selectedCity: '',
-        selected: false,
-        locationSelected: false,
-        guestSelected: false,
         guests: '',
         adults: 0,
         children: 0,
+        selected: false,
+        locationSelected: false,
+        guestSelected: false,
+        
       }
     },
    
@@ -138,7 +157,8 @@ import staysData from '../data/stays.json';
         'setGuests'
       ]),
       calcGuests: function(){
-        this.guests = this.adults + this.children + ' guests'
+        //Total of guests to be displayed on input
+        this.guests = this.adults + this.children + ' guests';
       }
    },
   }

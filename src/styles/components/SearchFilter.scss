@@ -119,6 +119,9 @@ input,
       .search-item{
          @include flexContent(center, flex-start, row);
          padding: 1.8rem 0;
+         .material-icons{
+            margin-right: 1rem;
+         }
       }
    }
    .guests-wrapper{
@@ -186,4 +189,25 @@ input,
    height: 100%;
    width: 100%;
 }
-
+.desktop{
+   display: none;
+}
+@media screen and (min-width: 968px) {
+   .search-filter{
+      margin: 0;
+      
+   }
+   .selected{
+      .search-filter{
+         flex-wrap: nowrap;
+      }
+      .search-button{
+         display: none;
+      }
+   }
+   .desktop{
+      display: block;
+   }
+   
+      
+}
