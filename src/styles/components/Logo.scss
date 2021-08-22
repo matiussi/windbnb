@@ -1,3 +1,18 @@
-.logo{
+.logo {
    margin: 1.9rem 0 0 1.3rem;
+   align-self: flex-start;
+}
+@media screen and (min-width: 576px) {
+   .logo{
+      flex-grow: 1;
+      align-self: unset;
+      margin-left: 0;
+   }
+}
+@media screen and (min-width: 968px) {
+   .logo {
+      flex-grow: 1;
+      align-self: unset;
+      margin-left: 0;
+   }
 }

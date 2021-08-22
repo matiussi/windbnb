@@ -48,11 +48,11 @@ h1,h2,h3,p{
 		justify-content: center;
 	}
 	.content{
+		min-width: 50%;
 		max-width: 130rem;
 		display: grid;
 		grid-template-rows: 17rem 1fr 4.5rem;
 		grid-template-columns: 1fr ;
-	
 		header{
 			grid-row: 1/2;
 		}

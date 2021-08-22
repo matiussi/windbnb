@@ -5,20 +5,24 @@ header{
    width: 100%;
    position: relative;
    min-height: 17rem;
-   .logo{
-      align-self: flex-start;
+   
+}
+
+@media screen and (min-width: 576px) {
+   header{
+      flex-direction: row;
+      width: 90%;
+      align-items: flex-start;
+      margin: 3.2rem auto 0 auto;
    }
 }
 @media screen and (min-width: 968px) {
    header{
       margin: 3.2rem auto 0 auto;
+      width: 90%;
       flex-direction: row;
       // max-width: 120rem;
       min-height: 15rem;
       align-items: flex-start;
-      .logo{
-         flex-grow: 1;
-         align-self: unset;
-      }
    }
 }

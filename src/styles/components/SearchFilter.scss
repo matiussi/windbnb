@@ -2,9 +2,10 @@
 
 
 button,
-input, 
-.input-location, 
-.input-guests, 
+input,
+.search-filter label, 
+.input-location,
+.input-guests,
 .search-item, 
 .search-button, 
 .close-button{
@@ -44,6 +45,19 @@ input,
    @include flexContent(center, flex-start, column);
    
 }
+.selectedanimation-enter-active,
+.selectedanimation-leave-active {
+   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+   animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+.selectedanimation-enter-from,
+.selectedanimation-leave-to {
+   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse;
+   animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse;
+}
+
 .selected{
    position: fixed;
    width: 100%;
@@ -51,8 +65,6 @@ input,
    height: 63.2rem;
    z-index: 10;
    background-color: #fff;
-   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-   animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
    .search-top{
       @include flexContent(center, center, row);
@@ -120,6 +132,7 @@ input,
       ul{
          padding: 0;
          margin: 1rem;
+         animation: fade-in 500ms linear;
       }
       .search-item{
          @include flexContent(center, flex-start, row);
@@ -131,6 +144,7 @@ input,
    }
    .guests-wrapper{
       @include flexContent(flex-start, center, column);
+      animation: fade-in 500ms linear;
       .guests{
          margin: 1.3rem 1rem;
          @include flexContent(flex-start, flex-start, column);
@@ -187,21 +201,24 @@ input,
 }
 .gray-bg{
    background-color: rgba(79, 79, 79, 0.4);
-   top:100%;
+   top:0;
    left: 0;
    z-index: 1;
-   position: absolute;
+   position: fixed;
    height: 100%;
    width: 100%;
 }
 .search-button.desktop{
    display: none;
 }
-
-@media screen and (min-width: 968px) {
+@media screen and (min-width: 576px) { 
    .search-filter{
       margin: 0;
-   }
+} 
+   
+}
+@media screen and (min-width: 968px) {
+  
    .selected{
       height: 46rem;
       .search-filter{
