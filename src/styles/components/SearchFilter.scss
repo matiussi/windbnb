@@ -1,250 +1,318 @@
-@import '../core/mixins';
+@import "../core/mixins";
 
-
+/* ======================
+   SHARED CSS PROPRIETIES
+   ======================*/
 button,
 input,
-.search-filter label, 
+.search-filter label,
 .input-location,
 .input-guests,
-.search-item, 
-.search-button, 
-.close-button{
+.search-item,
+.search-button,
+.close-button {
    cursor: pointer;
 }
-.search-filter, .search-button{
+.search-filter,
+.search-button {
    box-shadow: $shadow;
 }
 
-.search-filter{
+/* ======================
+      SEARCH WRAPPER 
+   ====================== */
+
+//========== SEARCH WRAPPER==========
+.search-wrapper, .search-wrapper-selected {
+   @include flexContent(center, flex-start, column);
+}
+.search-wrapper-selected{
+   height: 100%;
+}
+//========== SEARCH WRAPPER ANIMATIONS ==========
+.selectedanimation-enter-active,
+.selectedanimation-leave-active {
+   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+   animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.selectedanimation-enter-from,
+.selectedanimation-leave-to {
+   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse;
+   animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse;
+}
+
+/* ======================
+      SEARCH FILTER
+   ====================== */
+
+//========== DEFAULT SEARCH FILTER ==========
+.search-filter {
    @include flexContent(center, center, row);
    min-height: 5.5rem;
    width: 29.7rem;
    overflow: hidden;
    border-radius: $rounded;
    margin: 3.7rem auto;
-   input, button{
+   input,
+   button {
       height: 5.5rem;
       border: none;
       background-color: #fff;
       padding: 0;
    }
-   input{
+   input {
       width: 80%;
-      &:focus{
+      &:focus {
          outline: none;
       }
    }
-   .input-location, .input-guests{
+   .input-location,
+   .input-guests {
       border-right: 1px solid $af-white;
-      
+      &:hover, &:hover > input {
+         background-color: $af-white;
+      }
    }
-   
-}
-// Search bar wrapper
-.search-wrapper{
-   @include flexContent(center, flex-start, column);
-   
-}
-.selectedanimation-enter-active,
-.selectedanimation-leave-active {
-   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-   animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
 }
 
-.selectedanimation-enter-from,
-.selectedanimation-leave-to {
-   -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse;
-   animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse;
-}
+/* ======================
+      SELECTED CLASS
+   ====================== */
 
-.selected{
+//========== SELECTED ==========
+//WHEN THE USER CLICKS THE SEARCH FILTER, THE SELECTED CLASS WILL BE APPLIED
+.selected {
    position: fixed;
    width: 100%;
    top: 0;
    height: 63.2rem;
    z-index: 10;
    background-color: #fff;
-
-   .search-top{
+   //---------- EDIT SEARCH ----------
+   .search-top {
       @include flexContent(center, center, row);
       width: 90%;
       margin-top: 1.8rem;
-      h3{
+      h3 {
          flex-grow: 1;
       }
    }
-   .search-filter{
-      flex-direction: row;
+   //EXPANDING THE SEARCH FILTER
+   .search-filter {
       flex-wrap: wrap;
       width: 90%;
       min-height: 11rem;
       margin: 1.6rem auto;
-      input{
+      input {
          height: 2rem;
       }
    }
-   .input-location, .input-guests{
+   //DIVS THAT WRAPS THE INPUT AND THE INPUT LABEL
+   .input-location,
+   .input-guests {
       @include flexContent(inherit, flex-start, column);
       text-indent: 0;
       width: 100%;
       height: 5.5rem;
       position: relative;
-      .clear-input{
-         position: absolute;
-         top: 35%;
-         left: 80%;
-         width: 1.7rem;
-         height: 1.7rem;
-         background-color: $af-white;
-         border-radius: $rounded;
-         text-align: center;
-         .material-icons{
-            font-size: $text-lg;
-            color: $dark-charcoal;
-         }
-         &:hover{
-            background-color: $gray;
-         }
-      }
+      border: 2px transparent solid;
       & > * {
          width: 90%;
          margin-left: 2.6rem;
       }
-      & > label{
-         margin-top: .5rem;
+      & > label {
+         margin-top: 0.5rem;
       }
-      & > input{
+      & > input {
          line-height: 0;
       }
+      //FOCUS EFFECT
+      &.input-focus{
+         border: 2px $dark-charcoal solid;
+         border-radius: $rounded;
+      }
+      //---------- CLEAR INPUT BUTTON ----------
+      .clear-input {
+         @include flexContent(center, center, row);
+         position: absolute;
+         top: 30%;
+         left: 80%;
+         width: 2rem;
+         height: 2rem;
+         background-color: $gray;
+         border-radius: $rounded;
+         text-align: center;
+         .material-icons {
+            font-size: $text-lg;
+            color: $dark-charcoal;
+            &:hover{
+               color: $gray;
+            }
+         }
+         &:hover {
+            background-color: $dark-liver;
+         }
+      }
+      
    }
-   .input-location{
-      border-bottom: 1px solid $af-white;
-   }
-   .search-button-primary{
+   //HIDDING THE PRIMARY BUTTON WHEN SELECTED CLASS IS ACTIVE
+   .search-button-primary {
       display: none;
    }
-   .search-details{
+   //---------- SEARCH DETAILS ----------
+   //DIV THAT CONTAINS THE FILTERED LOCATIONS AND GUESTS
+   .search-details {
       width: 90%;
       max-height: 36rem;
-      overflow-y: scroll;
       flex-grow: 1;
-      ul{
+      ul {
          padding: 0;
          margin: 1rem;
+         -webkit-animation: fade-in 500ms linear;
          animation: fade-in 500ms linear;
       }
-      .search-item{
+      .search-item {
          @include flexContent(center, flex-start, row);
          padding: 1.8rem 0;
-         .material-icons{
+         .material-icons {
             margin-right: 1rem;
          }
       }
    }
-   .guests-wrapper{
+   //---------- GUESTS WRAPPER ----------
+   //GUESTS NUMBER SELECTOR, NUMBER OF ADULTS AND CHILDREN
+   .guests-wrapper {
       @include flexContent(flex-start, center, column);
+      -webkit-animation: fade-in 500ms linear;
       animation: fade-in 500ms linear;
-      .guests{
+      .guests {
          margin: 1.3rem 1rem;
          @include flexContent(flex-start, flex-start, column);
       }
-      .buttons{
+      .buttons {
          width: 15rem;
       }
-      span{
+      span {
          margin: 0 1.6rem;
       }
-      button{
+      button {
          width: 2.3rem;
          height: 2.3rem;
          background-color: #fff;
          border-radius: $rounded-sm;
-         border: .1rem solid $old-silver;
-         color: $button-guests-color;
+         border: 0.15rem solid $old-silver;
+         color: $old-silver; 
          font-weight: 800;
-         &:hover{
-            color: #fff;
-            background-color: $gray;
+         &:hover {
+            color: $dark-charcoal;
+            border: 0.15rem solid $dark-charcoal;
+            background-color: $af-white;
          }
       }
    }
-   .search-button{
+   //SEARCH BUTTON THAT WILL BE DISPLAYED ON THE BOTTOM (MOBILE)
+   .search-button {
       color: #fff;
-      background-color: $main-color;
+      background-color: $primary-color;
       @include flexContent(center, center, row);
       border-radius: $rounded;
       width: 12.6rem;
       height: 4.8rem;
       margin-bottom: 2rem;
-      
-      &:hover{
+
+      &:hover {
          background-color: $madder-lake;
       }
-      .search{
+      .search {
          margin-right: 1rem;
       }
    }
 }
+/* ======================
+      SEARCH BUTTONS
+   ====================== */
 
-.search-button-primary{
+//========== PRIMARY BUTTON ==========
+.search-button-primary {
    min-width: 5.3rem;
-   color: $main-color;
-   &:hover{
+   color: $primary-color;
+   &:hover {
       background-color: $af-white;
    }
 }
-.material-icons .search{
-   width: 1.7rem;
-   height: 1.7rem;
-   
+//========== DESKTOP BUTTON ==========
+.search-button.desktop {
+   display: none;
 }
-.gray-bg{
+// .material-icons .search {
+//    width: 1.7rem;
+//    height: 1.7rem;
+// }
+
+/* ======================
+      GRAY BACKGROUND
+   ====================== */
+
+//A GRAY BACKGROUND WILL BE DISPLAYED WHEN THE SELECTED CLASS IS ACTIVE
+.gray-bg {
    background-color: rgba(79, 79, 79, 0.4);
-   top:0;
+   top: 0;
    left: 0;
    z-index: 1;
    position: fixed;
    height: 100%;
    width: 100%;
 }
-.search-button.desktop{
-   display: none;
-}
-@media screen and (min-width: 576px) { 
-   .search-filter{
+
+/* ======================
+      MEDIA QUERIES
+   ====================== */
+@media screen and (min-width: 576px) {
+   .search-filter {
       margin: 0;
-} 
-   
+   }
 }
 @media screen and (min-width: 968px) {
-  
-   .selected{
+
+   //LIMITING THE SIZE OF SEARCH WRAPPER
+   .search-wrapper-selected{
+      max-width: 130rem;
+      width: 100%;
+   }
+   .selected {
       height: 46rem;
-      .search-filter{
+      .search-top{
+         margin-bottom: 1rem;
+      }
+      //EXPANDING THE SEARCH FILTER 
+      .search-filter {
          flex-wrap: nowrap;
          min-height: 5.5rem;
          height: 5.5rem;
       }
-      .search-button{
-         display: none;  
+      //HIDING THE BOTTOM BUTTON
+      .search-button {
+         display: none;
       }
-      .button-wrapper{
-        width: 100%;
-        height: 5.5rem;
-        @include flexContent(center, center, row);
-         .search-button.desktop{
+      //DISPLAYING A BUTTON BESIDE THE SEARCH FILTER
+      .button-wrapper {
+         width: 100%;
+         height: 5.5rem;
+         @include flexContent(center, center, row);
+         .search-button.desktop {
             display: flex;
             margin: 0;
             height: 4.8rem;
          }
       }
-      .search-list, .guests-wrapper{
+      .search-list,
+      .guests-wrapper {
          width: 33%;
       }
-      .guests-wrapper{
+      .guests-wrapper {
          margin-left: 34%;
       }
    }
-      
+   
 }

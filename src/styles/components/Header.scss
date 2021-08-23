@@ -1,15 +1,14 @@
-@import '../core/mixins';
+@import "../core/mixins";
 
-header{
+header {
    @include flexContent(center, center, column);
    width: 100%;
    position: relative;
    min-height: 17rem;
-   
 }
 
 @media screen and (min-width: 576px) {
-   header{
+   header {
       flex-direction: row;
       width: 90%;
       align-items: flex-start;
@@ -17,12 +16,9 @@ header{
    }
 }
 @media screen and (min-width: 968px) {
-   header{
-      margin: 3.2rem auto 0 auto;
-      width: 90%;
+   header {
+      width: 95%;
       flex-direction: row;
-      // max-width: 120rem;
       min-height: 15rem;
-      align-items: flex-start;
    }
 }

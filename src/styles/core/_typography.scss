@@ -32,8 +32,7 @@ label, .stay-info{
 }
 //Font small
 .search-top h3,
-.stay-details,
-.stay-ratings{
+.stay-details{
    font-size: $text-sm;
 }
 //Font medium
@@ -42,6 +41,7 @@ label, .stay-info{
 ::placeholder,
 .selected .search-button,
 .stays-amount,
+.stay-ratings,
 .stay-title,
 .footer{
    font-size: $text-md;
@@ -88,11 +88,13 @@ label, .guest-type{
 }
 .star{
    font-size: $icon-sm;
+   color: $primary-color;
 }
 .stay-title{
    font-weight: 600;
    width: 100%;
    line-height: 1.7rem;
+   cursor: pointer;
 }
 /* ======================
          FOOTER
@@ -102,6 +104,9 @@ label, .guest-type{
    text-align: center; 
 }
 
+/* ======================
+      MEDIA QUERIES
+   ====================== */
 @media screen and (min-width: 968px){
    .stays-in{
       font-size: 2.4rem;

@@ -1,40 +1,41 @@
+@import "./core/_animations.scss";
+@import "./core/_fonts.scss";
+@import "./core/_mixins.scss";
+@import "./core/_typography.scss";
+@import "./core/_variables.scss";
 
-@import './core/_animations.scss';
-@import './core/_colors.scss';
-@import './core/_fonts.scss';
-@import './core/_mixins.scss';
-@import './core/_typography.scss';
-@import './core/_variables.scss';
+@import "./components/Header.scss";
+@import "./components/Logo.scss";
+@import "./components/SearchFilter.scss";
+@import "./components/Stay.scss";
+@import "./components/StayWrapper.scss";
+@import "./components/Footer.scss";
 
-@import './components/Header.scss';
-@import './components/Logo.scss';
-@import './components/SearchFilter.scss';
-@import './components/Stay.scss';
-@import './components/StayWrapper.scss';
-@import './components/Footer.scss';
-
-
-html, body {
+html,
+body {
 	font-size: 62.5%;
 	padding: 0;
 	margin: 0;
 }
 
-#app{
+#app {
 	height: 100vh;
-	
 }
 
-ul, li{
+ul,
+li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-} 
+}
 a {
 	color: inherit;
 	text-decoration: none;
 }
-h1,h2,h3,p{
+h1,
+h2,
+h3,
+p {
 	margin: 0;
 }
 
@@ -42,25 +43,17 @@ h1,h2,h3,p{
 	box-sizing: border-box;
 }
 
-@media screen and (min-width: 968px) {
-	#app{
-		display: flex;
-		justify-content: center;
+.content {
+	margin: 0 auto;
+	max-width: 130rem;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 17rem 1fr 4.5rem;
+	grid-template-columns: 1fr;
+	header {
+		grid-row: 1/2;
 	}
-	.content{
-		min-width: 50%;
-		max-width: 130rem;
-		display: grid;
-		grid-template-rows: 17rem 1fr 4.5rem;
-		grid-template-columns: 1fr ;
-		header{
-			grid-row: 1/2;
-		}
-		section{
-			grid-row: 2/3;
-		}
-		
-		
+	section {
+		grid-row: 2/3;
 	}
 }
-	

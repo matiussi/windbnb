@@ -7,9 +7,10 @@
                selected = true;
                guestSelected = false;
                locationSelected = true;
+               setFocus();
             "
          >
-            <input :value="query" placeholder="Add location" ref="query" />
+            <input :value="query" placeholder="Add location" />
          </div>
          <div
             class="input-guests"
@@ -34,6 +35,7 @@
    </div>
    <transition name="selectedanimation">
       <div class="search-wrapper" :class="{ selected }" v-if="selected">
+         <div class="search-wrapper-selected">
          <div class="search-top">
             <h3>Edit your search</h3>
             <span class="material-icons close-button" @click="selected = false"
@@ -43,6 +45,7 @@
          <div class="search-filter">
             <div
                class="input-location"
+               :class="locationSelected ? 'input-focus' : ''"
                @click="
                   selected = true;
                   guestSelected = false;
@@ -59,7 +62,7 @@
                   ref="query"
                />
                <span
-                  v-if="query"
+                  v-if="query && locationSelected"
                   @click="
                      query = '';
                      selectedCity = '';
@@ -72,6 +75,7 @@
             </div>
             <div
                class="input-guests"
+               :class="guestSelected ? 'input-focus' : ''"
                @click="
                   selected = true;
                   guestSelected = true;
@@ -81,7 +85,7 @@
                <label>GUESTS</label>
                <input placeholder="Add guests" v-model="guests" readonly />
                <span
-                  v-if="guests"
+                  v-if="guests && guestSelected"
                   @click="
                      guests = '';
                      adults = 0;
@@ -110,6 +114,21 @@
          </div>
 
          <div class="search-details">
+            <ul class="search-list" v-if="locationSelected">
+               <li
+                  class="search-item"
+                  v-for="city in queryResults"
+                  :key="city"
+                  @click="
+                     query = city;
+                     queryResults = [];
+                     selectedCity = city;
+                  "
+               >
+                  <span class="material-icons">location_on</span>
+                  {{ city }}
+               </li>
+            </ul>
             <div
                class="guests-wrapper"
                :class="{ guestSelected }"
@@ -124,6 +143,7 @@
                      <button
                         @click="
                            adults > 0 ? adults-- : adults;
+                           adults < 1 && children > 0 ? children = 0 : ''
                            calcGuests();
                         "
                      >
@@ -158,6 +178,7 @@
                      <button
                         @click="
                            children++;
+                           adults < 1 && children > 0 ? adults++ : adults;
                            calcGuests();
                         "
                      >
@@ -166,22 +187,7 @@
                   </div>
                </div>
             </div>
-
-            <ul class="search-list" v-if="locationSelected">
-               <li
-                  class="search-item"
-                  v-for="city in queryResults"
-                  :key="city"
-                  @click="
-                     query = city;
-                     queryResults = [];
-                     selectedCity = city;
-                  "
-               >
-                  <span class="material-icons">location_on</span>
-                  {{ city }}
-               </li>
-            </ul>
+            
          </div>
          <span
             class="search-button"
@@ -193,6 +199,7 @@
             <span class="material-icons search">search</span>
             Search
          </span>
+         </div>
       </div>
    </transition>
    <div v-if="selected" class="gray-bg"></div>
@@ -228,12 +235,12 @@ export default {
          selected: false,
          locationSelected: false,
          guestSelected: false,
-         selectedanimation: true,
       };
    },
 
    methods: {
       onChange: function () {
+
          //Filtering the locations to be displayed below the searchbar
          return (this.queryResults = this.cities.filter((query) =>
             query.toLowerCase().includes(this.query.toLowerCase())
@@ -241,11 +248,17 @@ export default {
       },
       ...mapMutations(["setLocation", "setGuests"]),
       calcGuests: function () {
+         const guestsSum = this.adults + this.children;
          //Total of guests to be displayed on input
-         this.guests = this.adults + this.children + " guests";
+         if(this.adults + this.children < 1){
+            this.guests = ''
+         }else{
+            this.guests = guestsSum + " guests";
+         }
+         
       },
       setFocus: function () {
-         this.$refs.query.focus();
+         this.$nextTick(() => this.$refs.query.focus())
       },
    },
 };
