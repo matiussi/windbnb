@@ -21,8 +21,8 @@
             v-bind:photo="stay.photo"
          />
       </ul>
-      <div class="stay" v-if="filteredCities.length < 1">
-         <h2 class="no-stay">No stays were found!</h2>
+      <div class="no-stay" v-if="filteredCities.length < 1">
+         <h2>No stays were found!</h2>
       </div>
   </section>
 </template>
@@ -40,7 +40,6 @@ export default {
    data(){
       return{
          stays: staysData,
-         // filteredCities: []
       }
    },
    computed:{

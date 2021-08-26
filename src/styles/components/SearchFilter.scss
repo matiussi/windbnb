@@ -30,14 +30,14 @@ input,
    height: 100%;
 }
 //========== SEARCH WRAPPER ANIMATIONS ==========
-.selectedanimation-enter-active,
-.selectedanimation-leave-active {
+.search-wrapper-animation-enter-active,
+.search-wrapper-animation-leave-active {
    -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
    animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-.selectedanimation-enter-from,
-.selectedanimation-leave-to {
+.search-wrapper-animation-enter-from,
+.search-wrapper-animation-leave-to {
    -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse;
    animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse;
 }
@@ -77,12 +77,11 @@ input,
 }
 
 /* ======================
-      SELECTED CLASS
+      SEARCH FILTER
    ====================== */
 
-//========== SELECTED ==========
-//WHEN THE USER CLICKS THE SEARCH FILTER, THE SELECTED CLASS WILL BE APPLIED
-.selected {
+//WHEN THE USER CLICKS THE SEARCH FILTER, THE SEARCH-FILTER-ACTIVE CLASS WILL BE APPLIED
+.search-filter-active {
    position: fixed;
    width: 100%;
    top: 0;
@@ -156,7 +155,7 @@ input,
       }
       
    }
-   //HIDDING THE PRIMARY BUTTON WHEN SELECTED CLASS IS ACTIVE
+   //HIDDING THE PRIMARY BUTTON WHEN SEARCH-FILTER CLASS IS ACTIVE
    .search-button-primary {
       display: none;
    }
@@ -254,7 +253,7 @@ input,
       GRAY BACKGROUND
    ====================== */
 
-//A GRAY BACKGROUND WILL BE DISPLAYED WHEN THE SELECTED CLASS IS ACTIVE
+//A GRAY BACKGROUND WILL BE DISPLAYED WHEN THE SEARCH FILTER CLASS IS ACTIVE
 .gray-bg {
    background-color: rgba(79, 79, 79, 0.4);
    top: 0;
@@ -280,7 +279,7 @@ input,
       max-width: 130rem;
       width: 100%;
    }
-   .selected {
+   .search-filter-active {
       height: 46rem;
       .search-top{
          margin-bottom: 1rem;
